@@ -15,6 +15,8 @@ class GildedRose(object):
                 modify_item.update_aged_brie(item)
             elif item.name == 'Backstage passes to a TAFKAL80ETC concert':
                 modify_item.update_backstage_passes(item)
+            elif item.name == 'Conjured Mana Cake':
+                modify_item.update_conjured(item)
             else:
                 modify_item.update_normal_item(item)
 
@@ -61,6 +63,14 @@ class Modify(object):
             item.quality = 0
         item.sell_in -= 1
 
+    def update_conjured(self, item):
+        if item.sell_in > 0:
+            depreciation = -2
+        else:
+            depreciation = -4
+
+        item.quality = max((item.quality + depreciation), self.MIN_QUALITY)
+        item.sell_in -= 1
 
 class Item:
     def __init__(self, name, sell_in, quality):
