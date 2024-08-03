@@ -1,29 +1,15 @@
-# Gilded Rose starting position in Python
+# Gilded Rose Kata - Conjured Items Solution
 
-For exercise instructions see [top level README](../README.md)
+## Overview
 
-Suggestion: create a python virtual environment for this project. See the [documentation](https://docs.python.org/3/library/venv.html)
+This project provides a Python solution to the Gilded Rose Kata, with a particular focus on handling Conjured items. The Gilded Rose Kata is a coding exercise that involves managing an inventory system with specific rules for different types of items.
 
-## Run the unit tests from the Command-Line
+The solution includes functionality for various item types, including the handling of Conjured items, which degrade in quality twice as fast as normal items.
 
-```
-python test_gilded_rose.py
-```
+## Features
 
-## Run the TextTest fixture from the Command-Line
-
-For e.g. 10 days:
-
-```
-python texttest_fixture.py 10
-```
-
-You should make sure the command shown above works when you execute it in a terminal before trying to use TextTest (see below).
-
-
-## Run the TextTest approval test that comes with this project
-
-There are instructions in the [TextTest Readme](../texttests/README.md) for setting up TextTest. You will need to specify the Python executable and interpreter in [config.gr](../texttests/config.gr). Uncomment these lines:
-
-    executable:${TEXTTEST_HOME}/python/texttest_fixture.py
-    interpreter:python
+- **Conjured Items**: Special handling for Conjured items, which degrade in quality at twice the rate of normal items.
+- **Regular Items**: Implementation of standard behavior for regular items.
+- **Aged Brie**: Special handling where the quality of Aged Brie increases as it ages.
+- **Backstage Passes**: Quality changes based on the remaining sell-in days.
+- **Sulfuras**: A legendary item that does not change in quality or sell-in.
