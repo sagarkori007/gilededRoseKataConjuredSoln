@@ -1,11 +1,19 @@
+"""
+Gilded Rose Inventory Management
+
+This module contains the implementation of the GildedRose inventory system,
+which manages and updates the quality and
+sell-in values of various items in inventory.
+"""
 # -*- coding: utf-8 -*-
 
 class GildedRose(object):
+    """Handles the item quality and sell-in updates."""
 
-    def __init__(self, items):
+    def __init__(self, items) -> None:
         self.items = items
 
-    def update_quality(self):
+    def update_quality(self) -> None:
         modify_item = Modify()
 
         for item in self.items:
@@ -21,11 +29,16 @@ class GildedRose(object):
                 modify_item.update_normal_item(item)
 
 class Modify(object):
+    """
+    Handles the logic for updating item quality and sell-in values.
+    This class contains methods for updating different types of items based on their
+    specific rules.
+    """
 
     MAX_QUALITY = 50
     MIN_QUALITY = 0
 
-    def update_normal_item(self, item):
+    def update_normal_item(self, item) -> None:
         if item.sell_in > 0:
             decrease_by = -1
         else:
@@ -33,21 +46,21 @@ class Modify(object):
         item.quality = max((item.quality + decrease_by), self.MIN_QUALITY)
         item.sell_in -= 1
 
-    def update_aged_brie(self, item):
+    def update_aged_brie(self, item) -> None:
         if item.sell_in > 0:
             increase_by = 1
         else:
             increase_by = 2
         item.quality = min((item.quality + increase_by), self.MAX_QUALITY)
         item.sell_in -= 1
-    
-    def update_sulfuras(self, item):
+
+    def update_sulfuras(self, item) -> None:
         # Sulfuras items do not change in quality or sell-in
         pass
 
-    def update_backstage_passes(self, item):
+    def update_backstage_passes(self, item) -> None:
 
-        def get_quality(item, increase_by):
+        def get_quality(item, increase_by) -> None:
             item.quality = min(item.quality + increase_by, self.MAX_QUALITY)
 
         if item.sell_in > 10:
@@ -63,7 +76,7 @@ class Modify(object):
             item.quality = 0
         item.sell_in -= 1
 
-    def update_conjured(self, item):
+    def update_conjured(self, item) -> None:
         if item.sell_in > 0:
             depreciation = -2
         else:
